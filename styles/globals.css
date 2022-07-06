@@ -1,0 +1,33 @@
+html,
+body {
+  background: #263238;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-size: 10px;
+  color: #607a86;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --content: 768px;
+}
+
+h1 {
+  font-size: 4rem;
+}
+
+p {
+  font-size: 1.6rem;
+}
