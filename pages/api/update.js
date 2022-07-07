@@ -15,7 +15,10 @@ export default async function handler(req, res) {
 async function createContainer(req, res) {
     const body = req.body;
     try {
-        const newEntry = await prisma.container.create({
+        const newEntry = await prisma.container.update({
+            where: {
+                id: body.id,
+            },
             data: {
                 name: body.name,
                 location: body.location
