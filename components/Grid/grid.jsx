@@ -13,7 +13,7 @@ export default function Grid() {
     return (
         <div className={styles.grid}>
             {data.map((container) => (
-                <Container key={container.name} container={container} items={container.Item} />
+                <Container key={container.id} container={container} items={container.Item} />
             ))}
         </div>
     )

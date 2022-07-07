@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Grid from '../components/Grid/grid'
 import styles from '../styles/Home.module.css'
 import React, { useState } from 'react';
+import { mutate } from 'swr'
 
 
 export default function Home() {
@@ -10,7 +11,7 @@ export default function Home() {
   const [location, setLocation] = useState('');
 
 
-  const submitData = async (e) => {
+  const createContainer = async (e) => {
     e.preventDefault();
     try {
       const body = { name, location };
@@ -19,6 +20,7 @@ export default function Home() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),
       });
+      mutate('/api/read');
     } catch (error) {
       console.error(error);
     }
@@ -40,7 +42,7 @@ export default function Home() {
 
         <Grid />
 
-        <form onSubmit={submitData}>
+        <form onSubmit={createContainer}>
           <h1>Create Box</h1>
           <input
             onChange={(e) => setName(e.target.value)}
