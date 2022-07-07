@@ -1,0 +1,8 @@
+.item {
+    border-radius: var(--radius);
+    border: 1px solid var(--red);
+    padding: 1rem;
+    margin: 1rem;
+    display: flex;
+    justify-content: space-between;
+}

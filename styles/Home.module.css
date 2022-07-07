@@ -4,3 +4,22 @@
   margin: 0 auto;
   padding: 4rem;
 }
+
+.error {
+  padding: 1rem 2rem;
+  width: 100%;
+  border-left: 2px solid var(--red);
+  position: relative;
+  display: inline-block;
+}
+
+.error:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--red);
+  opacity: .1;
+}
