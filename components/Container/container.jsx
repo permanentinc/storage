@@ -9,7 +9,7 @@ import { FaPlus, FaTrash } from "react-icons/fa";
 export default function Container({ container, items }) {
 
     const [name, setName] = useState('');
-
+    const [loading, setLoading] = useState('');
 
     const deleteContainer = async (id) => {
         try {
@@ -30,11 +30,14 @@ export default function Container({ container, items }) {
         e.preventDefault();
         try {
             const body = { name, quantity: 1, containerId: container.id };
+            setName('');
+            setLoading(true);
             await fetch('/api/createItem', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(body),
             });
+            setLoading(false);
             mutate('/api/read');
         } catch (error) {
             console.error(error);
@@ -44,28 +47,35 @@ export default function Container({ container, items }) {
 
     return (
         <div className={styles.container}>
-            <p>{container.name}</p>
-            <p>{container.location}</p>
-            <p onClick={(e) => deleteContainer(container.id)}>
-                <FaTrash />
-            </p>
+
+            <div className={styles.header}>
+                <h6>{container.name}</h6>
+                <h6>{container.location}</h6>
+                <p onClick={(e) => deleteContainer(container.id)}>
+                    <FaTrash className={styles.icon} />
+                </p>
+            </div>
+
 
             {items.map((item) => (
                 <Item key={item.id} item={item} />
             ))}
 
-            <form onSubmit={createItem}>
-                <input
-                    onChange={(e) => setName(e.target.value)}
-                    placeholder="Name"
-                    type="text"
-                    value={name}
-                />
-                <button disabled={!name || !location} type="submit" >
-                    <FaPlus />
-                </button>
-            </form>
+            <div className={styles.footer}>
 
+                <form onSubmit={createItem}>
+                    <input
+                        onChange={(e) => setName(e.target.value)}
+                        placeholder={loading ? 'Adding...' : 'Add an item'}
+                        type="text"
+                        value={name}
+                    />
+                    <button disabled={!name || !location} type="submit" >
+                        <FaPlus />
+                    </button>
+                </form>
+
+            </div>
         </div>
     )
 } 

@@ -1,7 +1,78 @@
 .container {
-    border-radius: var(--radius);
+    border-radius: var(--radius-large);
     border: 1px solid var(--highlight);
-    padding: 1rem;
-    width: calc(50% - 2rem);
-    margin: 1rem;
+    width: calc(33.3333% - 4rem);
+    margin: 2rem;
+    box-shadow: var(--shadow);
+    background: var(--transparent);
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    padding-bottom: 6.8rem;
+    position: relative;
+}
+
+.header {
+    padding: 1rem 2rem;
+    border-bottom: 1px solid var(--purple-dark);
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    width: 100%;
+    margin: 0 auto auto;
+}
+
+.header h6:last-of-type {
+    opacity: 0.3;
+    margin-left: 1rem;
+}
+
+.icon {
+    position: absolute;
+    right: 2rem;
+    top: 50%;
+    width: 1rem;
+    height: 1rem;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.icon path {
+    color: var(--heading);
+    transition: all 111ms;
+}
+
+.icon:hover path {
+    color: var(--text);
+}
+
+.footer {
+    background: var(--transparent);
+    padding: 2rem;
+    position: relative;
+    margin-top: auto;
+    width: 100%;
+    margin-bottom: 0;
+    border-radius: 0 0 var(--radius-large) var(--radius-large);
+    position: absolute;
+    bottom: 0;
+}
+
+.footer input {
+    padding: .5rem 1rem;
+}
+
+.footer button {
+    position: absolute;
+    right: 2rem;
+    width: 2.8rem;
+    height: 2.8rem;
+    background: transparent;
+}
+
+.footer button svg {
+    width: 1rem;
+    height: 1rem;
+    opacity: 0.6;
+
 }

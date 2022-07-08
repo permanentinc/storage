@@ -1,10 +1,11 @@
 .query {
     position: relative;
+    max-width: var(--inner-content);
+    margin: 0 auto 4rem;
 }
 
 .input {
     font-size: 3rem;
-
     padding: 1rem 2rem;
 }
 

@@ -22,7 +22,6 @@ export default function Item({ item }) {
     return (
         <div className={styles.item}>
             <p>{item.name}</p>
-            <p>{item.quantity}</p>
             <p onClick={(e) => deleteItem(item.id)}>
                 <FaTrash />
             </p>

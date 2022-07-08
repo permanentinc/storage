@@ -1,9 +1,12 @@
 :root {
+  --radius-large: 10px;
   --radius: 2px;
-  --content: 768px;
+  --inner-content: 768px;
+  --content: 1280px;
   --red: #c93c3c;
   --green: #47822b;
   --purple: #474d84;
+  --purple-dark: #171933;
   --body-bg: radial-gradient(farthest-side ellipse at 10% 0, #333867 20%, #17193b);
   --heading: rgba(244, 244, 245, .9);
   --text: rgba(244, 244, 245, 0.6);
@@ -21,8 +24,13 @@ h6 {
   color: var(--heading);
 }
 
+h6 {
+  font-size: 1.8rem;
+  font-weight: 200;
+}
+
 p {
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   color: var(--text);
 }
 
