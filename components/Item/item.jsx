@@ -1,7 +1,7 @@
 import styles from './item.module.css';
 import { mutate } from 'swr';
 import { FaTrash } from 'react-icons/fa';
-
+import Highlighter from "react-highlight-words";
 
 const deleteItem = async (id) => {
     try {
@@ -17,11 +17,17 @@ const deleteItem = async (id) => {
     }
 };
 
-export default function Item({ item }) {
-
+export default function Item({ item, query }) {
     return (
         <div className={styles.item}>
-            <p>{item.name}</p>
+            <p>
+                <Highlighter
+                    highlightClassName="highlight"
+                    searchWords={[query]}
+                    autoEscape={true}
+                    textToHighlight={item.name}
+                />
+            </p>
             <p onClick={(e) => deleteItem(item.id)}>
                 <FaTrash />
             </p>

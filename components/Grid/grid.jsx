@@ -4,7 +4,7 @@ import Container from '../Container/container'
 
 const fetcher = (...args) => fetch(...args).then(res => res.json())
 
-export default function Grid() {
+export default function Grid({ query }) {
 
     const { data, error } = useSWR('/api/read', fetcher)
 
@@ -13,7 +13,11 @@ export default function Grid() {
     return (
         <div className={styles.grid}>
             {data.map((container) => (
-                <Container key={container.id} container={container} items={container.Item} />
+                <Container key={container.id}
+                    container={container}
+                    items={container.Item}
+                    query={query}
+                />
             ))}
         </div>
     )

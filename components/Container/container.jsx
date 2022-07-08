@@ -5,8 +5,7 @@ import React, { useState } from 'react';
 import { FaPlus, FaTrash } from "react-icons/fa";
 
 
-
-export default function Container({ container, items }) {
+export default function Container({ container, items, query }) {
 
     const [name, setName] = useState('');
     const [loading, setLoading] = useState('');
@@ -44,10 +43,16 @@ export default function Container({ container, items }) {
         }
     };
 
+    const isHighlighted = items => {
+        if(query === '') return false;
+        return items.some(item => {
+            return item.name.includes(query)
+        });
+    }
 
     return (
-        <div className={styles.container}>
-
+        <div
+            className={styles.container + ((isHighlighted(items)) ? ' ' + styles.highlighted : '')}>
             <div className={styles.header}>
                 <h6>{container.name}</h6>
                 <h6>{container.location}</h6>
@@ -58,7 +63,7 @@ export default function Container({ container, items }) {
 
 
             {items.map((item) => (
-                <Item key={item.id} item={item} />
+                <Item key={item.id} item={item} query={query} />
             ))}
 
             <div className={styles.footer}>

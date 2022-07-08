@@ -23,3 +23,24 @@
   background: var(--red);
   opacity: .1;
 }
+
+.createContainer {
+  width: 100%;
+  max-width: var(--inner-content);
+  margin: 0 auto;
+  padding: 4rem 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.createContainer form {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.input {
+  width: Calc(50% - 2rem);
+  padding:1rem;
+  border-radius: var(--radius);
+}
