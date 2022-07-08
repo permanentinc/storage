@@ -40,7 +40,13 @@
 }
 
 .input {
-  width: Calc(50% - 2rem);
-  padding:1rem;
+  width: Calc(50% - 3rem);
+  padding: 1rem;
   border-radius: var(--radius);
+  margin-right: 1.1rem;
+}
+
+.button {
+  width: 3.8rem;
+  height: 3.8rem;
 }

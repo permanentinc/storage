@@ -28,9 +28,9 @@ export default function Item({ item, query }) {
                     textToHighlight={item.name}
                 />
             </p>
-            <p onClick={(e) => deleteItem(item.id)}>
+            {/* <p onClick={(e) => deleteItem(item.id)}>
                 <FaTrash />
-            </p>
+            </p> */}
         </div>
     )
 }

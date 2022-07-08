@@ -1,7 +1,6 @@
 .container {
     border-radius: var(--radius-large);
     border: 1px solid var(--highlight);
-    width: calc(33.3333% - 4rem);
     margin: 2rem;
     box-shadow: var(--shadow);
     background: var(--transparent);
@@ -10,6 +9,20 @@
     align-content: flex-start;
     padding-bottom: 6.8rem;
     position: relative;
+    width: calc(33.3333% - 4rem);
+}
+
+@media screen and (max-width: 1024px) {
+    .container {
+        width: calc(50% - 2rem);
+        margin: 2rem 1rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        width: calc(100%);
+    }
 }
 
 .highlighted {

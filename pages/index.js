@@ -57,17 +57,17 @@ export default function Home() {
               onChange={(e) => setName(e.target.value)}
               placeholder={loading ? 'Adding...' : 'Name'}
               type="text"
-              className={styles.input} 
+              className={styles.input}
               value={name}
             />
             <input
               onChange={(e) => setLocation(e.target.value)}
               placeholder={loading ? 'Adding...' : 'Location'}
               type="text"
-              className={styles.input} 
+              className={styles.input}
               value={location}
             />
-            <button disabled={!name || !location} type="submit" value="Create Box" >
+            <button className={styles.button} disabled={!name || !location} type="submit" value="Create Box" >
               <FaPlus />
             </button>
           </form>

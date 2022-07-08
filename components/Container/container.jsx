@@ -44,11 +44,18 @@ export default function Container({ container, items, query }) {
     };
 
     const isHighlighted = items => {
-        if(query === '') return false;
+        if (query === '') return false;
         return items.some(item => {
             return item.name.includes(query)
         });
     }
+
+
+    const filteredItems = items => {
+        if (query === '') return items;
+        return items.filter(item => item.name.toLowerCase().includes(query.toLowerCase()));
+    }
+
 
     return (
         <div
@@ -56,13 +63,13 @@ export default function Container({ container, items, query }) {
             <div className={styles.header}>
                 <h6>{container.name}</h6>
                 <h6>{container.location}</h6>
-                <p onClick={(e) => deleteContainer(container.id)}>
+                {/* <p onClick={(e) => deleteContainer(container.id)}>
                     <FaTrash className={styles.icon} />
-                </p>
+                </p> */}
             </div>
 
 
-            {items.map((item) => (
+            {filteredItems(items).map((item) => (
                 <Item key={item.id} item={item} query={query} />
             ))}
 

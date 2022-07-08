@@ -35,8 +35,9 @@ p {
   color: var(--text);
 }
 
-body {
+html {
   background: var(--body-bg);
+  height: auto;
 }
 
 button,
