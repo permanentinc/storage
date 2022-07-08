@@ -4,7 +4,7 @@ import Grid from '../components/Grid/grid'
 import styles from '../styles/Home.module.css'
 import React, { useState } from 'react';
 import { mutate } from 'swr'
-import { FaPlus } from "react-icons/fa";
+import { FaPlus } from 'react-icons/fa';
 
 export default function Home() {
 
@@ -26,7 +26,7 @@ export default function Home() {
       console.error(error);
     }
   };
- 
+
 
   return (
     <div className={styles.container}>
@@ -35,7 +35,7 @@ export default function Home() {
         <meta name="description" content="Storage solution for the dreamatorium" />
         <link rel="icon" href="/favicon.ico" />
         <style>
-          @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap");
+          @import url(&quot;https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&amp;display=swap&ldquo;);
         </style>
       </Head>
 
