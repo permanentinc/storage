@@ -38,6 +38,7 @@ p {
 html {
   background: var(--body-bg);
   height: auto;
+  min-height: 100%;
 }
 
 button,
