@@ -1,9 +1,10 @@
 import Head from 'next/head'
+import Query from '../components/Query/query'
 import Grid from '../components/Grid/grid'
 import styles from '../styles/Home.module.css'
 import React, { useState } from 'react';
 import { mutate } from 'swr'
-
+import { FaPlus } from "react-icons/fa";
 
 export default function Home() {
 
@@ -25,7 +26,7 @@ export default function Home() {
       console.error(error);
     }
   };
-
+ 
 
   return (
     <div className={styles.container}>
@@ -33,31 +34,36 @@ export default function Home() {
         <title>Storage | Dreamatorium</title>
         <meta name="description" content="Storage solution for the dreamatorium" />
         <link rel="icon" href="/favicon.ico" />
+        <style>
+          @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap");
+        </style>
       </Head>
 
       <main>
-        <h1 className={styles.title}>
-          Storage
-        </h1>
+
+        <Query />
 
         <Grid />
 
-        <form onSubmit={createContainer}>
-          <h1>Create Box</h1>
-          <input
-            onChange={(e) => setName(e.target.value)}
-            placeholder="Name"
-            type="text"
-            value={name}
-          />
-          <input
-            onChange={(e) => setLocation(e.target.value)}
-            placeholder="Location"
-            type="text"
-            value={location}
-          />
-          <input disabled={!name || !location} type="submit" value="Create Box" />
-        </form>
+        <div className={styles.createContainer} >
+          <form onSubmit={createContainer}>
+            <input
+              onChange={(e) => setName(e.target.value)}
+              placeholder="Name"
+              type="text"
+              value={name}
+            />
+            <input
+              onChange={(e) => setLocation(e.target.value)}
+              placeholder="Location"
+              type="text"
+              value={location}
+            />
+            <button disabled={!name || !location} type="submit" value="Create Box" >
+              <FaPlus />
+            </button>
+          </form>
+        </div>
 
       </main>
 

@@ -55,7 +55,6 @@ export default function Container({ container, items }) {
             ))}
 
             <form onSubmit={createItem}>
-                <p>Create Item</p>
                 <input
                     onChange={(e) => setName(e.target.value)}
                     placeholder="Name"

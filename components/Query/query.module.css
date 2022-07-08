@@ -1,0 +1,23 @@
+.query {
+    position: relative;
+}
+
+.input {
+    font-size: 3rem;
+
+    padding: 1rem 2rem;
+}
+
+.icon {
+    position: absolute;
+    right: 2rem;
+    top: 50%;
+    width: 2rem;
+    height: 2rem;
+    transform: translateY(-50%);
+}
+
+.icon path {
+    color: var(--text);
+    opacity: 0.2;
+}
