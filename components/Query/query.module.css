@@ -1,12 +1,18 @@
 .query {
     position: relative;
     max-width: var(--inner-content);
-    margin: 0 auto 4rem;
+    margin: 0 auto 2rem;
 }
 
 .input {
     font-size: 3rem;
     padding: 1rem 2rem;
+}
+
+@media (max-width: 768px) {
+    .input {
+        font-size: 2rem;
+    }
 }
 
 .icon {

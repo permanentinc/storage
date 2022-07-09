@@ -2,7 +2,7 @@
   width: 100%;
   max-width: var(--content);
   margin: 0 auto;
-  padding: 4rem;
+  padding: 2rem;
 }
 
 .error {
@@ -57,5 +57,3 @@
   color: var(--transparent);
   margin: 2rem auto -2rem;
 }
-
-

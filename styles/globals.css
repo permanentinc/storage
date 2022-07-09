@@ -8,8 +8,7 @@
   --green: #47822b;
   --green-mid: #00421f;
   --green-dark: #003217;
-  --body-bg: radial-gradient(farthest-side ellipse at 10% 0, #333867 20%, #17193b);
-  --body-bg: radial-gradient(farthest-side ellipse at 10% 0, #005e2d 20%, #002510);
+  --body-bg-light: radial-gradient(farthest-side ellipse at 10% 0, #005e2d 20%, #04411e);
   --heading: rgba(244, 244, 245, .9);
   --text: rgba(244, 244, 245, 0.6);
   --text-white: rgba(244, 244, 245, .9);
@@ -38,9 +37,16 @@ p {
 }
 
 html {
-  background: var(--body-bg);
+  background: var(--body-bg-light);
   height: auto;
   min-height: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  html {
+    background: var(--body-bg-light);
+  }
+
 }
 
 button,
