@@ -3,7 +3,7 @@ import Item from '../Item/item';
 import styles from './container.module.css';
 import React, { useState } from 'react';
 import { FaPlus, FaTrash } from "react-icons/fa";
-
+import { useSession } from "next-auth/react"
 
 export default function Container({ container, items, query }) {
 
@@ -50,22 +50,30 @@ export default function Container({ container, items, query }) {
         });
     }
 
+    const shouldHide = items => {
+        if (query === '') return false;
+        return ! items.some(item => {
+            return item.name.includes(query)
+        });
+    }
+
 
     const filteredItems = items => {
         if (query === '') return items;
         return items.filter(item => item.name.toLowerCase().includes(query.toLowerCase()));
     }
 
+    const { data: session } = useSession()
 
     return (
         <div
-            className={styles.container + ((isHighlighted(items)) ? ' ' + styles.highlighted : '')}>
+            className={styles.container + ((isHighlighted(items)) ? ' ' + styles.highlighted : '')+ ((shouldHide(items)) ? ' ' + styles.shouldHide : '')}>
             <div className={styles.header}>
                 <h6>{container.name}</h6>
                 <h6>{container.location}</h6>
-                {/* <p onClick={(e) => deleteContainer(container.id)}>
+                {(session) ? <p onClick={(e) => deleteContainer(container.id)}>
                     <FaTrash className={styles.icon} />
-                </p> */}
+                </p> : null}
             </div>
 
 

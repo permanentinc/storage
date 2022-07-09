@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Login from '../components/Login/login'
 import Query from '../components/Query/query'
 import Grid from '../components/Grid/grid'
 import styles from '../styles/Home.module.css'
@@ -46,6 +47,8 @@ export default function Home() {
       </Head>
 
       <main>
+
+        <Login />
 
         <Query onUpdateFilter={onUpdateFilter} />
 
