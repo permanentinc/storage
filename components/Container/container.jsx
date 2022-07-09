@@ -52,7 +52,7 @@ export default function Container({ container, items, query }) {
 
     const shouldHide = items => {
         if (query === '') return false;
-        return ! items.some(item => {
+        return !items.some(item => {
             return item.name.includes(query)
         });
     }
@@ -67,7 +67,7 @@ export default function Container({ container, items, query }) {
 
     return (
         <div
-            className={styles.container + ((isHighlighted(items)) ? ' ' + styles.highlighted : '')+ ((shouldHide(items)) ? ' ' + styles.shouldHide : '')}>
+            className={styles.container + ((isHighlighted(items)) ? ' ' + styles.highlighted : '') + ((shouldHide(items)) ? ' ' + styles.shouldHide : '')}>
             <div className={styles.header}>
                 <h6>{container.name}</h6>
                 <h6>{container.location}</h6>
