@@ -6,9 +6,10 @@
   --red: #c93c3c;
   --blue: #3979f6;
   --green: #47822b;
-  --purple: #474d84;
-  --purple-dark: #171933;
+  --green-mid: #00421f;
+  --green-dark: #003217;
   --body-bg: radial-gradient(farthest-side ellipse at 10% 0, #333867 20%, #17193b);
+  --body-bg: radial-gradient(farthest-side ellipse at 10% 0, #005e2d 20%, #002510);
   --heading: rgba(244, 244, 245, .9);
   --text: rgba(244, 244, 245, 0.6);
   --text-white: rgba(244, 244, 245, .9);
@@ -60,7 +61,7 @@ input {
 
 button {
   cursor: pointer;
-  background: var(--purple);
+  background: var(--green-mid);
   color: var(--text-white);
   border-radius: var(--radius);
 }
@@ -77,6 +78,6 @@ button {
 
 
 .highlight {
-  background: var(--purple);
+  background: var(--green);
   color: white;
 }

@@ -50,9 +50,12 @@ export default function Home() {
 
         <Login />
 
+
         <Query onUpdateFilter={onUpdateFilter} />
 
         <Grid query={query} />
+
+        <h2 className={styles.heading}>Add a box</h2>
 
         <div className={styles.createContainer} >
           <form onSubmit={createContainer}>

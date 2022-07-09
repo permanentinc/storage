@@ -63,7 +63,7 @@ export default function Container({ container, items, query }) {
         return items.filter(item => item.name.toLowerCase().includes(query.toLowerCase()));
     }
 
-    const { data: session } = useSession()
+    const { data: session } = useSession();
 
     return (
         <div
@@ -77,9 +77,11 @@ export default function Container({ container, items, query }) {
             </div>
 
 
-            {filteredItems(items).map((item) => (
-                <Item key={item.id} item={item} query={query} />
-            ))}
+            <div className={styles.contents}>
+                {filteredItems(items).map((item) => (
+                    <Item key={item.id} item={item} query={query} />
+                ))}
+            </div>
 
             <div className={styles.footer}>
 

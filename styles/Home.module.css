@@ -50,3 +50,12 @@
   width: 3.8rem;
   height: 3.8rem;
 }
+
+.heading {
+  text-align: center;
+  font-size: 3rem;
+  color: var(--transparent);
+  margin: 2rem auto -2rem;
+}
+
+

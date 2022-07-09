@@ -2,6 +2,7 @@ import styles from './item.module.css';
 import { mutate } from 'swr';
 import { FaTrash } from 'react-icons/fa';
 import Highlighter from "react-highlight-words";
+import { useSession } from "next-auth/react"
 
 const deleteItem = async (id) => {
     try {
@@ -17,7 +18,11 @@ const deleteItem = async (id) => {
     }
 };
 
+
 export default function Item({ item, query }) {
+
+    const { data: session } = useSession();
+
     return (
         <div className={styles.item}>
             <p>
@@ -28,9 +33,9 @@ export default function Item({ item, query }) {
                     textToHighlight={item.name}
                 />
             </p>
-            {/* <p onClick={(e) => deleteItem(item.id)}>
+            {(session) ? <p className={styles.icon} onClick={(e) => deleteItem(item.id)}>
                 <FaTrash />
-            </p> */}
+            </p> : null}
         </div>
     )
 }

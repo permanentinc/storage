@@ -5,12 +5,28 @@
     justify-content: space-between;
     position: relative;
     width: 100%;
-    border-bottom: 1px solid var(--purple-dark);
+    border-bottom: 1px solid var(--green-mid);
     margin: 0 auto;
     align-self: flex-start;
+
+
+}
+
+.item:last-of-type {
+    border: 0;
 }
 
 .item svg {
     width: 1rem;
     height: 1rem;
+}
+
+.icon {
+    opacity: 0;
+    transition: all 111ms ease;
+    cursor: pointer;
+}
+
+.item:hover .icon {
+    opacity: 1;
 }
