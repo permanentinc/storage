@@ -3,6 +3,7 @@
   max-width: var(--content);
   margin: 0 auto;
   padding: 2rem;
+  position: relative;
 }
 
 .error {
@@ -57,3 +58,24 @@
   color: var(--transparent);
   margin: 2rem auto -2rem;
 }
+
+
+.main {
+  position: relative;
+  z-index: 3;
+}
+
+.logo {
+  position: absolute !important;
+  position: fixed !important;
+  width: 80%;
+  opacity: 0.03;
+  margin: 0 auto;
+  filter: brightness(100);
+  bottom: 1rem;
+  right: 1rem;
+}
+
+
+
+.symbol {}

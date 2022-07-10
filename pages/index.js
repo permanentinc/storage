@@ -6,6 +6,7 @@ import styles from '../styles/Home.module.css'
 import React, { useState } from 'react';
 import { mutate } from 'swr'
 import { FaPlus } from 'react-icons/fa';
+import Image from 'next/image';
 
 export default function Home() {
 
@@ -46,10 +47,15 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
+      <main className={styles.main}>
 
+      <div className={styles.logo} >
+          <Image className={styles.symbol}
+            layout="responsive"
+            src="/dreamatorium_logo.svg" height={244} width={730} alt="Dreamatorium logo" />
+        </div>
+        
         <Login />
-
 
         <Query onUpdateFilter={onUpdateFilter} />
 
@@ -79,6 +85,7 @@ export default function Home() {
           </form>
         </div>
 
+        
       </main>
 
     </div>
