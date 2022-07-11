@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 import { FaPlus, FaTrash } from "react-icons/fa";
 import { useSession } from "next-auth/react"
 
-export default function Container({ container, items, query }) {
+export default function Container({ container, items, query, isInURL }) {
 
     const [name, setName] = useState('');
     const [loading, setLoading] = useState('');
@@ -57,7 +57,6 @@ export default function Container({ container, items, query }) {
         });
     }
 
-
     const filteredItems = items => {
         if (query === '') return items;
         return items.filter(item => item.name.toLowerCase().includes(query.toLowerCase()));
@@ -67,7 +66,7 @@ export default function Container({ container, items, query }) {
 
     return (
         <div
-            className={styles.container + ((isHighlighted(items)) ? ' ' + styles.highlighted : '') + ((shouldHide(items)) ? ' ' + styles.shouldHide : '')}>
+            className={styles.container + ((isHighlighted(items)) ? ' ' + styles.highlighted : '') + ((shouldHide(items)) ? ' ' + styles.shouldHide : '') + ((isInURL) ? ' ' + styles.isInURL : '')}>
             <div className={styles.header}>
                 <h6>{container.name}</h6>
                 <h6>{container.location}</h6>

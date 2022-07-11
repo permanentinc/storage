@@ -14,7 +14,7 @@
   --text-white: rgba(244, 244, 245, .9);
   --transparent: rgba(0, 0, 0, .24);
   --shadow: 0 23px 20px -20px rgb(9 10 18 / 10%), 0 0 15px rgb(9 10 18 / 6%);
-  --shadow-light: 0 23px 20px -20px rgb(255 255 255 / 10%), 0 0 15px rgb(255 255 255 / 6%);
+  --shadow-light: 0 23px 20px -20px rgb(255 255 255 / 40%), 0 0 15px rgb(255 255 255 / 43%);
 }
 
 h1,

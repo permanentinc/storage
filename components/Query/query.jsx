@@ -3,7 +3,6 @@ import React from 'react';
 import { FaSearch, FaTimes } from 'react-icons/fa';
 
 
-
 export default function Query({ onUpdateFilter, query }) {
 
     return (
