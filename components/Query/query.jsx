@@ -1,14 +1,15 @@
 import styles from './query.module.css';
 import React from 'react';
-import { FaSearch } from 'react-icons/fa';
+import { FaSearch, FaTimes } from 'react-icons/fa';
 
 
 
-export default function Query({ onUpdateFilter }) {
+export default function Query({ onUpdateFilter, query }) {
 
     return (
         <div className={styles.query}>
-            <FaSearch className={styles.icon} />
+            {(!query) ? <FaSearch className={styles.icon} /> :
+                <FaTimes className={styles.cross} onClick={() => onUpdateFilter('')} />}
             <input
                 onChange={(e) => onUpdateFilter(e.target.value)}
                 className={styles.input}

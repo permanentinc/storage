@@ -5,11 +5,9 @@ import Loader from '../Loader/loader'
 
 const fetcher = (...args) => fetch(...args).then(res => res.json())
 
-export default function Grid({ query }) {
+export default function Grid({ fallback, query }) {
+    const { data } = useSWR('/api/read', fetcher)
 
-    const { data, error } = useSWR('/api/read', fetcher)
-
-    if (error) return <div className={styles.error} ><p>An error occured.</p></div>
     if (!data) return <div className={styles.grid}>
         <Loader />
         <Loader />
@@ -33,4 +31,5 @@ export default function Grid({ query }) {
             ))}
         </div>
     )
-}  
+}
+

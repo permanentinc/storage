@@ -49,15 +49,15 @@ export default function Home() {
 
       <main className={styles.main}>
 
-      <div className={styles.logo} >
+        <div className={styles.logo} >
           <Image className={styles.symbol}
             layout="responsive"
             src="/dreamatorium_logo.svg" height={244} width={730} alt="Dreamatorium logo" />
         </div>
-        
+
         <Login />
 
-        <Query onUpdateFilter={onUpdateFilter} />
+        <Query onUpdateFilter={onUpdateFilter} query={query} />
 
         <Grid query={query} />
 
@@ -85,9 +85,10 @@ export default function Home() {
           </form>
         </div>
 
-        
+
       </main>
 
     </div>
   )
 }
+

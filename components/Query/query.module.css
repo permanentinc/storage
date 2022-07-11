@@ -28,3 +28,18 @@
     color: var(--text);
     opacity: 0.2;
 }
+
+.cross {
+    position: absolute;
+    right: 2rem;
+    top: 50%;
+    width: 2rem;
+    height: 2rem;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.cross path {
+    color: var(--text-white);
+    opacity: 1;
+}
