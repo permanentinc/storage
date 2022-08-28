@@ -56,7 +56,6 @@ export default function Home() {
         </div>
 
         <Login />
-
         <Query onUpdateFilter={onUpdateFilter} query={query} />
 
         <Grid query={query} />
@@ -89,6 +88,7 @@ export default function Home() {
       </main>
 
     </div>
+
   )
 }
 
