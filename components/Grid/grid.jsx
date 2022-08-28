@@ -7,11 +7,11 @@ import { useRouter } from 'next/router'
 
 export async function getStaticProps() {
     const res = await fetch('/api/read')
-    const posts = await res.json()
+    const data = await res.json()
   
     return {
       props: {
-        posts,
+        data,
       },
       // Next.js will attempt to re-generate the page:
       // - When a request comes in
