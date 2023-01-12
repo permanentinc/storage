@@ -8,25 +8,23 @@ import { useRouter } from 'next/router'
 export async function getStaticProps() {
     const res = await fetch('/api/read')
     const data = await res.json()
-  
+
     return {
-      props: {
-        data,
-      },
-      // Next.js will attempt to re-generate the page:
-      // - When a request comes in
-      // - At most once every 10 seconds
-      revalidate: 10, // In seconds
+        props: {
+            data,
+        },
     }
-  }
+}
 
 const fetcher = (...args) => fetch(...args).then(res => res.json())
 
-export default function Grid({ query }) {
+export default function Grid({ query, data }) {
 
-    const router = useRouter()
+    const router = useRouter();
 
-    const { data } = useSWR('/api/read', fetcher)
+    console.log(data);
+
+    // const { data } = useSWR('/api/read', fetcher)
 
     if (!data) return <div className={styles.grid}>
         <Loader />

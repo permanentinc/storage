@@ -6,7 +6,7 @@ import styles from '../styles/Home.module.css'
 import React, { useState } from 'react';
 import { mutate } from 'swr'
 import { FaPlus } from 'react-icons/fa';
-import Image from 'next/image';
+// import Image from 'next/image';
 
 export default function Home() {
 
@@ -49,18 +49,18 @@ export default function Home() {
 
       <main className={styles.main}>
 
-        <div className={styles.logo} >
+        {/* <div className={styles.logo} >
           <Image className={styles.symbol}
             layout="responsive"
             src="/dreamatorium_logo.svg" height={244} width={730} alt="Dreamatorium logo" />
-        </div>
+        </div> */}
 
         <Login />
         <Query onUpdateFilter={onUpdateFilter} query={query} />
 
         <Grid query={query} />
 
-        <h2 className={styles.heading}>Add a box</h2>
+        {/* <h2 className={styles.heading}>Add a box</h2> */}
 
         <div className={styles.createContainer} >
           <form onSubmit={createContainer}>
