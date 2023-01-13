@@ -10,6 +10,9 @@ import { useSession } from "next-auth/react"
 export default function Container({ container, items, query, isInURL }) {
 
     const [name, setName] = useState('');
+    const [containerName, setContainerName] = useState('');
+    const [containerLocation, setContainerLocation] = useState('');
+    const [updatedName, setUpdatedName] = useState('');
     const [loading, setLoading] = useState('');
 
     const deleteContainer = async (id) => {
@@ -25,7 +28,6 @@ export default function Container({ container, items, query, isInURL }) {
             console.error(error);
         }
     };
-
 
     const createItem = async (e) => {
         e.preventDefault();
@@ -44,6 +46,22 @@ export default function Container({ container, items, query, isInURL }) {
             console.error(error);
         }
     };
+
+
+    const update = async (id, name, location) => {
+        try {
+            const body = { id, name, location };
+            await fetch('/api/update', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(body),
+            });
+            mutate('/api/read');
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
 
     const isHighlighted = items => {
         if (query === '') return false;
@@ -66,13 +84,34 @@ export default function Container({ container, items, query, isInURL }) {
 
     const { data: session } = useSession();
 
+
+
     return (
         <div
             className={styles.container + ((isHighlighted(items)) ? ' ' + styles.highlighted : '') + ((shouldHide(items)) ? ' ' + styles.shouldHide : '') + ((isInURL) ? ' ' + styles.isInURL : '')}>
             <div className={styles.header}>
-                
-                <h6>{container.name}</h6>
-                <h6>{container.location}</h6>
+                {(session || process.env.NODE_ENV) ? (
+                    <h6><input
+                        className={styles.input}
+                        onChange={(e) => setContainerName(e.target.value)}
+                        onBlur={(e) => update(container.id, e.target.value, container.location)}
+                        placeholder={container.name}
+                        type="text"
+                    /></h6>
+                ) : (
+                    <h6>{container.name}</h6>
+                )}
+                {(session || process.env.NODE_ENV) ? (
+                    <h6><input
+                        className={styles.input}
+                        onChange={(e) => setContainerLocation(e.target.value)}
+                        onBlur={(e) => update(container.id, container.name, e.target.value)}
+                        placeholder={container.location}
+                        type="text"
+                    /></h6>
+                ) : (
+                    <h6>{container.location}</h6>
+                )}
                 {(session || process.env.NODE_ENV) ? <p onClick={(e) => deleteContainer(container.id)}>
                     <FaTrash className={styles.icon} />
                 </p> : null}

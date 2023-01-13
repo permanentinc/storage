@@ -63,7 +63,7 @@ export default function Home({ data }) {
 
       <main className={styles.main}>
 
-        <div className={styles.logo} >
+        <div className={styles.logo}>
           <Image className={styles.symbol}
             style="responsive"
             src="/dreamatorium_logo.svg" height={244} width={730} alt="Dreamatorium logo" />
