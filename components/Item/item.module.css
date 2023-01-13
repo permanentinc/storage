@@ -1,6 +1,5 @@
 .item {
     padding: 0.5rem 2rem;
-    margin: 1rem;
     display: flex;
     justify-content: space-between;
     position: relative;
@@ -8,8 +7,6 @@
     border-bottom: 1px solid var(--green-mid);
     margin: 0 auto;
     align-self: flex-start;
-
-
 }
 
 .item:last-of-type {
@@ -28,5 +25,22 @@
 }
 
 .item:hover .icon {
+    opacity: 1;
+}
+
+.input {
+    color: white;
+    background: transparent;
+    transition: all 123ms ease;
+}
+
+.input:active,
+.input:focus {
+    color: white;
+    background: rgba(0, 0, 0, .2) !important;
+}
+
+.input::placeholder {
+    color: white;
     opacity: 1;
 }

@@ -5,6 +5,8 @@ import React, { useState } from 'react';
 import { FaPlus, FaTrash } from "react-icons/fa";
 import { useSession } from "next-auth/react"
 
+
+
 export default function Container({ container, items, query, isInURL }) {
 
     const [name, setName] = useState('');
@@ -68,9 +70,10 @@ export default function Container({ container, items, query, isInURL }) {
         <div
             className={styles.container + ((isHighlighted(items)) ? ' ' + styles.highlighted : '') + ((shouldHide(items)) ? ' ' + styles.shouldHide : '') + ((isInURL) ? ' ' + styles.isInURL : '')}>
             <div className={styles.header}>
+                
                 <h6>{container.name}</h6>
                 <h6>{container.location}</h6>
-                {(session) ? <p onClick={(e) => deleteContainer(container.id)}>
+                {(session || process.env.NODE_ENV) ? <p onClick={(e) => deleteContainer(container.id)}>
                     <FaTrash className={styles.icon} />
                 </p> : null}
             </div>

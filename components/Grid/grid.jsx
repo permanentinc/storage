@@ -5,34 +5,15 @@ import Container from '../Container/container'
 import Loader from '../Loader/loader'
 import { useRouter } from 'next/router'
 
-export async function getStaticProps() {
-    const res = await fetch('/api/read')
-    const data = await res.json()
-
-    return {
-        props: {
-            data,
-        },
-    }
-}
 
 const fetcher = (...args) => fetch(...args).then(res => res.json())
 
-export default function Grid({ query, data }) {
-
+export default function Grid({ query, props }) {
     const router = useRouter();
 
-    console.log(data);
-
-    // const { data } = useSWR('/api/read', fetcher)
+    const { data } = useSWR('/api/read', fetcher, { initialData: props });
 
     if (!data) return <div className={styles.grid}>
-        <Loader />
-        <Loader />
-        <Loader />
-        <Loader />
-        <Loader />
-        <Loader />
         <Loader />
         <Loader />
         <Loader />

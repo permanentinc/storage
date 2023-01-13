@@ -4,7 +4,7 @@ import { FaGithub } from 'react-icons/fa';
 
 export default function Login() {
     const { data: session } = useSession()
-    if (session) {
+    if (session || process.env.NODE_ENV) {
         return (
             <>
                 <button className={styles.loggedin} onClick={() => signOut()}>

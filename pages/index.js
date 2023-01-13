@@ -6,9 +6,21 @@ import styles from '../styles/Home.module.css'
 import React, { useState } from 'react';
 import { mutate } from 'swr'
 import { FaPlus } from 'react-icons/fa';
-// import Image from 'next/image';
+import Image from 'next/image';
+import { useSession } from "next-auth/react"
 
-export default function Home() {
+
+export async function getStaticProps() {
+  const res = await fetch('https://storage.pinc.nz/api/read')
+  const data = await res.json()
+  return {
+    props: {
+      data,
+    },
+  }
+}
+
+export default function Home({ data }) {
 
   const [name, setName] = useState('');
   const [query, setQuery] = useState('');
@@ -38,6 +50,8 @@ export default function Home() {
     setQuery(values);
   }
 
+  const { data: session } = useSession();
+
   return (
     <div className={styles.container}>
 
@@ -49,42 +63,46 @@ export default function Home() {
 
       <main className={styles.main}>
 
-        {/* <div className={styles.logo} >
+        <div className={styles.logo} >
           <Image className={styles.symbol}
-            layout="responsive"
+            style="responsive"
             src="/dreamatorium_logo.svg" height={244} width={730} alt="Dreamatorium logo" />
-        </div> */}
+        </div>
 
         <Login />
         <Query onUpdateFilter={onUpdateFilter} query={query} />
 
-        <Grid query={query} />
+        <Grid query={query} props={data} />
+        <div>
+          {(session || process.env.NODE_ENV) ? (
+            <div>
+              <h2 className={styles.heading}>Add a box</h2>
 
-        {/* <h2 className={styles.heading}>Add a box</h2> */}
-
-        <div className={styles.createContainer} >
-          <form onSubmit={createContainer}>
-            <input
-              onChange={(e) => setName(e.target.value)}
-              placeholder={loading ? 'Adding...' : 'Name'}
-              type="text"
-              className={styles.input}
-              value={name}
-            />
-            <input
-              onChange={(e) => setLocation(e.target.value)}
-              placeholder={loading ? 'Adding...' : 'Location'}
-              type="text"
-              className={styles.input}
-              value={location}
-            />
-            <button className={styles.button} disabled={!name || !location} type="submit" value="Create Box" >
-              <FaPlus />
-            </button>
-          </form>
-        </div>
-
-
+              <div className={styles.createContainer} >
+                <form onSubmit={createContainer}>
+                  <input
+                    onChange={(e) => setName(e.target.value)}
+                    placeholder={loading ? 'Adding...' : 'Name'}
+                    type="text"
+                    className={styles.input}
+                    value={name}
+                  />
+                  <input
+                    onChange={(e) => setLocation(e.target.value)}
+                    placeholder={loading ? 'Adding...' : 'Location'}
+                    type="text"
+                    className={styles.input}
+                    value={location}
+                  />
+                  <button className={styles.button} disabled={!name || !location} type="submit" value="Create Box" >
+                    <FaPlus />
+                  </button>
+                </form>
+              </div>
+            </div>
+          ) : (
+            <div></div>
+          )}</div>
       </main>
 
     </div>
