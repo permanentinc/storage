@@ -1,3 +1,4 @@
+
 import { mutate } from 'swr';
 import Item from '../Item/item';
 import styles from './container.module.css';
@@ -66,14 +67,14 @@ export default function Container({ container, items, query, isInURL }) {
     const isHighlighted = items => {
         if (query === '') return false;
         return items.some(item => {
-            return item.name.includes(query)
+            return item.name.toLowerCase().includes(query.toLowerCase())
         });
     }
 
     const shouldHide = items => {
         if (query === '') return false;
         return !items.some(item => {
-            return item.name.includes(query)
+            return item.name.toLowerCase().includes(query.toLowerCase())
         });
     }
 
@@ -94,7 +95,7 @@ export default function Container({ container, items, query, isInURL }) {
                     <h6><input
                         className={styles.input}
                         onChange={(e) => setContainerName(e.target.value)}
-                        onBlur={(e) => update(container.id, e.target.value, container.location)}
+                        onBlur={(e) => (e.target.value !== '') ? update(container.id, e.target.value, container.location) : null}
                         placeholder={container.name}
                         type="text"
                     /></h6>
@@ -102,15 +103,15 @@ export default function Container({ container, items, query, isInURL }) {
                     <h6>{container.name}</h6>
                 )}
                 {(session || process.env.NODE_ENV) ? (
-                    <h6><input
+                    <h6 className={styles.abosluteInput}><input
                         className={styles.input}
                         onChange={(e) => setContainerLocation(e.target.value)}
-                        onBlur={(e) => update(container.id, container.name, e.target.value)}
+                        onBlur={(e) => (e.target.value !== '') ? update(container.id, container.name, e.target.value) : null}
                         placeholder={container.location}
                         type="text"
                     /></h6>
                 ) : (
-                    <h6>{container.location}</h6>
+                    <h6 className={styles.abosluteInput}>{container.location}</h6>
                 )}
                 {(session || process.env.NODE_ENV) ? <p onClick={(e) => deleteContainer(container.id)}>
                     <FaTrash className={styles.icon} />

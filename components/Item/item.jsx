@@ -46,7 +46,7 @@ export default function Item({ item, query, onUpdateName }) {
                     <input
                         className={styles.input}
                         onChange={(e) => setName(e.target.value)}
-                        onBlur={(e) => updateItem(item.id, e.target.value)}
+                        onBlur={(e) => (e.target.value !== '') ? updateItem(item.id, e.target.value, item.name) : null}
                         placeholder={item.name}
                         type="text"
                     />
